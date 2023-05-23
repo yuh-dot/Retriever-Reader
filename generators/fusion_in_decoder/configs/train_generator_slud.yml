@@ -1,0 +1,29 @@
+# experiment
+name: "fusion-in-decoder_BERT_env"
+seed: 2022
+total_step: 60000
+eval_step: 1000
+save_freq: 1000
+
+# dataset
+train_data: "/code/AIO3_FiD_baseline/aio_02_train-prefix_add-ctx.jsonl"
+eval_data: "/code/AIO3_FiD_baseline/aio_02_dev-prefix_add-ctx.jsonl"
+checkpoint_dir: "model"
+
+# model 
+model_name_or_path: "sonoisa/t5-base-japanese"
+use_checkpoint: True
+n_context: 50
+text_max_length: 20
+
+# training (optimizer & scheduler)
+optim: adamw
+scheduler: linear
+lr: 5e-5
+clip: 1.0
+warmup_step: 1000
+total_steps: 60000
+weight_decay: 0.01
+per_gpu_batch_size: 1
+
+is_distributed: False
